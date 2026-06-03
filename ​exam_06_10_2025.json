@@ -1,0 +1,217 @@
+{
+  "exam_info": {
+    "university": "جامعة سوهاج",
+    "faculty": "كلية العلوم / كلية التربية",
+    "department": "قسم الرياضيات",
+    "subject": "ديناميكا",
+    "date": "06/10/2025",
+    "duration": "ساعتان",
+    "total_marks": 70
+  },
+  "questions": [
+    {
+      "question_id": 1,
+      "type": "multiple_choice",
+      "question_text": "العجلة هي المعدل الزمني لتغير:",
+      "options": {
+        "A": "السرعة",
+        "B": "الإزاحة",
+        "C": "المسافة",
+        "D": "كل مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "a = dv/dt",
+        "why_correct": "العجلة تُعرَّف فيزيائياً ورسمياً بأنها مشتقة السرعة المتجهة بالنسبة للزمن.",
+        "why_others_wrong": "معدل تغير الإزاحة يعطي السرعة، ومعدل تغير المسافة يعطي مقدار السرعة القياسية وليس العجلة."
+      }
+    },
+    {
+      "question_id": 2,
+      "type": "multiple_choice",
+      "question_text": "العلم الذي يختص بوصف الحركة وصفاً مجرداً دون التعرض لمسبباتها هو:",
+      "options": {
+        "A": "الكيناتيكا",
+        "B": "الاستاتيكا",
+        "C": "الكينماتيكا",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "Kinematics = Pure description of motion metrics (x, v, a, t).",
+        "why_correct": "علم الكينماتيكا (Kinematics) يهتم بهندسة ومواصفات المسار الحركي دون ربطه بالكتلة أو القوى المسببة.",
+        "why_others_wrong": "الكيناتيكا تدرس الحركة مع القوى، والاستاتيكا تدرس الأجسام المتزنة في حالة السكون."
+      }
+    },
+    {
+      "question_id": 3,
+      "type": "multiple_choice",
+      "question_text": "في علم الحركة يوجد متغير مستقل دائماً في ازدياد هو:",
+      "options": {
+        "A": "الإزاحة",
+        "B": "السرعة",
+        "C": "الزمن",
+        "D": "العجلة"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "t increases monotonically (dt > 0).",
+        "why_correct": "الزمن هو المحدد والمحرك المستقل الأساسي في المعادلات الديناميكية الكلاسيكية ولا يمكن أن يعود للخلف أو يتناقص.",
+        "why_others_wrong": "باقي الكميات تابعة للزمن وتتأثر بطبيعة القوى فقد تزيد أو تقل أو تنعدم."
+      }
+    },
+    {
+      "question_id": 4,
+      "type": "multiple_choice",
+      "question_text": "مميزات الحركة هي:",
+      "options": {
+        "A": "السرعة والعجلة",
+        "B": "الزمن",
+        "C": "الإزاحة والسرعة",
+        "D": "كل مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "Primary dynamic features of a moving particle are velocity and acceleration vectors.",
+        "why_correct": "في هذا النموذج المنقح، تم التركيز على (السرعة والعجلة) كعناصر مميزة للحالة الحركية والاشتقاقية الآنية للجسم كخيار أساسي معتمد بالورقة.",
+        "why_others_wrong": "الخيارات الأخرى تمثل متغيرات الموضع أو المتغير المستقل، وليست الخصائص المميزة للتغير الحركي الذاتي كالعجلة والسرعة."
+      }
+    },
+    {
+      "question_id": 5,
+      "type": "multiple_choice",
+      "question_text": "السرعة هي المعدل الزمني لتغير:",
+      "options": {
+        "A": "الإزاحة",
+        "B": "السرعة",
+        "C": "المسافة",
+        "D": "كل مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "v = dx/dt",
+        "why_correct": "التغير الزمني للموضع أو متجه الإزاحة ينتج عنه رياضياً متجه السرعة.",
+        "why_others_wrong": "تغير السرعة ينتج عجلة، وتغير المسافة ينتج سرعة عددية."
+      }
+    },
+    {
+      "question_id": 6,
+      "type": "multiple_choice",
+      "question_text": "يتعرض جسيم في خط مستقيم تبعاً للعلاقة v^2 = 8x + 1، إذا بدأ الجسيم حركته من نقطة الأصل بسرعة مقدارها 5 m/s، فإنه بعد مرور 2 ثواني يقطع مسافة مقدارها:",
+      "options": {
+        "A": "30",
+        "B": "32",
+        "C": "18",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "2v(dv/dx) = 8 -> f = v(dv/dx) = 4 m/s^2. العجلة ثابتة وتساوي 4. بناءً على معطيات واضع الامتحان بالسرعة الابتدائية v_0 = 5 m/s: x = v_0*t + 0.5*f*t^2 = 5(2) + 0.5(4)(2^2) = 10 + 8 = 18 m.",
+        "why_correct": "بالتعويض المباشر في قانون نيوتن للمسافة بالعجلة المستنتجة (4) والسرعة الابتدائية المعطاة نصاً (5) والزمن (2 ثانية).",
+        "why_others_wrong": "الخيارات الأخرى ناتجة عن عدم حساب العجلة بشكل دقيق أو استخدام قيم زمنية خاطئة."
+      }
+    },
+    {
+      "question_id": 7,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار سرعته بعد مرور 2 ثواني يعطى من:",
+      "options": {
+        "A": "13",
+        "B": "14",
+        "C": "15",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "v = v_0 + f*t = 5 + 4(2) = 13 m/s.",
+        "why_correct": "باستخدام معادلة السرعة الأولى للحركة المنتظمة تحت تأثير العجلة الثابتة المحسوبة.",
+        "why_others_wrong": "باقي القِيَم لا تطابق دالة التزايد الخطي للسرعة مع الزمن."
+      }
+    },
+    {
+      "question_id": 8,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، يتحرك الجسيم بعجلة مقدارها:",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "f = 0.5 * d(v^2)/dx = 0.5 * d(8x + 1)/dx = 4 m/s^2.",
+        "why_correct": "العجلة الثابتة هي القيمة المشتقة لمربع السرعة بالنسبة للإزاحة مقسومة على 2.",
+        "why_others_wrong": "باقي الخيارات لا تطابق الاشتقاق الرياضي الرياضي الصحيح."
+      }
+    },
+    {
+      "question_id": 9,
+      "type": "multiple_choice",
+      "question_text": "يتعرّك جسيم في المنحنى r = 2*theta^2 بسرعة زاوية منتظمة مقدارها 2 حول القطب علماً بأنه بدأ حركته من القطب. عند دراسة حركة الجسيم في اللحظة t = 1 وجد أن theta تساوي:",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "d(theta)/dt = 2 -> theta = 2t. At t = 1 s: theta = 2(1) = 2 rad.",
+        "why_correct": "بالتكامل الزمني المباشر للسرعة الزاوية المنتظمة.",
+        "why_others_wrong": "باقي الاختيارات لا تتفق مع حاصل ضرب السرعة الزاوية المنتظمة في الزمن المحدد."
+      }
+    },
+    {
+      "question_id": 10,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، قيمة r تساوي:",
+      "options": {
+        "A": "4",
+        "B": "8",
+        "C": "64",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "r = 2*theta^2. التعويض عن قيمة theta = 2 يعطي: r = 2 * (2^2) = 2 * 4 = 8.",
+        "why_correct": "بالتعويض المباشر بالزاوية المستنتجة في الخطوة السابقة داخل معادلة المسار المسندة.",
+        "why_others_wrong": "القيم الأخرى ناتجة عن نسيان معامل المنحنى (2) أو أخطاء بالتربيع."
+      }
+    },
+    {
+      "question_id": 11,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار السرعة المحصلة يساوي:",
+      "options": {
+        "A": "112*sqrt(2)",
+        "B": "121*sqrt(2)",
+        "C": "64*sqrt(2)",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "v_r = dr/dt = 4*theta*(d(theta)/dt) = 4(2)(2) = 16. v_theta = r*(d(theta)/dt) = 8(2) = 16. v = sqrt(16^2 + 16^2) = 16*sqrt(2).",
+        "why_correct": "المقدار الحقيقي للسرعة المحصلة هو 16*sqrt(2)، وبما أنها غير موجودة بالاختيارات الثلاثة الأولى، فإن النتيجة هي لا شيء مما سبق.",
+        "why_others_wrong": "القيم المذكورة هي أرقام عشوائية لا تطابق حسابات السرعة القطبية للمسار الحركي الحالي."
+      }
+    },
+    {
+      "question_id": 12,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، بينما العجلة المحصلة تعطى من:",
+      "options": {
+        "A": "160",
+        "B": "260",
+        "C": "380",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "d2r/dt2 = 4*(d(theta)/dt)^2 + 4*theta*(d2(theta)/dt2) = 4(2^2) + 0 = 16. a_r = d2r/dt2 - r*(d(theta)/dt)^2 = 16 - 8(2^2) = 16 - 32 = -16. a_theta = r*(d2(theta)/dt2) + 2*(dr/dt)*(d(theta)/dt) = 0 + 2(16)(2) = 64. a = sqrt((-16)^2 + 64^2) = sqrt(256 + 4096) = sqrt(4352) = 16*sqrt(17).",
+        "why_correct": "العجلة الكلية المحسوبة تساوي 16*sqrt(17) وهي غير متواجدة ضمن القِيَم المقترحة، فالإجابة هي لا شيء مما سبق.",
+        "why_others_wrong": "باقي الاختيارات لا تعبر عن المحصلة الجذرية لمركبتي العجلة القطبية الحقيقية."
+      }
+    }
+  ]
+}

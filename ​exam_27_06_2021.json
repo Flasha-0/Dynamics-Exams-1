@@ -1,0 +1,588 @@
+{
+  "exam_info": {
+    "university": "جامعة سوهاج",
+    "faculty": "كلية التربية / كلية العلوم",
+    "department": "قسم الرياضيات",
+    "subject": "ديناميكا",
+    "date": "27/06/2021",
+    "duration": "ثلاث ساعات",
+    "total_marks": 70
+  },
+  "questions": [
+    {
+      "question_id": 1,
+      "type": "multiple_choice",
+      "question_text": "السرعة هي المعدل الزمني لتغير:",
+      "options": {
+        "A": "الإزاحة",
+        "B": "المسافة",
+        "C": "السرعة",
+        "D": "كل مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "Vector velocity is defined as: \\vec{v} = \\frac{d\\vec{r}}{dt}",
+        "why_correct": "السرعة كمية متجهة وتساوي معدل تغير متجه الإزاحة بالنسبة للزمن.",
+        "why_others_wrong": "المسافة كمية قياسية وتغيرها يعطي السرعة العددية وليس السرعة المتجهة المطلقة، وتغير السرعة يعطي العجلة وليس السرعة."
+      }
+    },
+    {
+      "question_id": 2,
+      "type": "multiple_choice",
+      "question_text": "مميزات الحركة هي:",
+      "options": {
+        "A": "السرعة والعجلة",
+        "B": "الإزاحة والسرعة",
+        "C": "الزمن",
+        "D": "كل مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "Motion parameters = {\\vec{r}, \\vec{v}, \\vec{a}, t}",
+        "why_correct": "تتميز الحركة بدراسة الإزاحة والسرعة والعجلة كدوال في المتغير المستقل وهو الزمن، وبالتالي جميع الخيارات تعتبر من مميزات الحركة.",
+        "why_others_wrong": "الخيارات الأخرى مجرد عناصر منفردة بينما الإجابة الشاملة هي كل ما سبق."
+      }
+    },
+    {
+      "question_id": 3,
+      "type": "multiple_choice",
+      "question_text": "العجلة هي المعدل الزمني لتغير:",
+      "options": {
+        "A": "المسافة",
+        "B": "الإزاحة",
+        "C": "السرعة",
+        "D": "كل مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "\\vec{a} = \\frac{d\\vec{v}}{dt}",
+        "why_correct": "العجلة هي كمية متجهة تعبر عن معدل تغير متجه السرعة بالنسبة للزمن.",
+        "why_others_wrong": "تغير المسافة أو الإزاحة يعطي السرعة وليس العجلة."
+      }
+    },
+    {
+      "question_id": 4,
+      "type": "multiple_choice",
+      "question_text": "في علم الحركة يوجد متغير مستقل دائماً في إزدياد هو:",
+      "options": {
+        "A": "الإزاحة",
+        "B": "الزمن",
+        "C": "السرعة",
+        "D": "العجلة"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "t \\in [0, \\infty), \\Delta t > 0",
+        "why_correct": "الزمن هو المتغير المستقل الوحيد في المعادلات الديناميكية والذي يتقدم دائماً للأمام ولا يمكن أن يقل أو يتوقف.",
+        "why_others_wrong": "الإزاحة والسرعة والعجلة هي متغيرات تابعة للزمن ويمكن أن تزيد أو تقل أو تنعدم بحسب طبيعة الحركة."
+      }
+    },
+    {
+      "question_id": 5,
+      "type": "multiple_choice",
+      "question_text": "العلم الذي يختص بوصف الحركة وصفاً مجرداً دون التعرض لمسبباتها هو:",
+      "options": {
+        "A": "الكينماتيكا",
+        "B": "الكيناتيكا",
+        "C": "الاستاتيكا",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "Kinematics = Geometry of motion without forces.",
+        "why_correct": "علم الكينماتيكا (Kinematics) هو العلم الهندسي الهادف لوصف وتحديد مواضع الجسيمات وسرعاتها وعجلاتها دون دراسة القوى المسببة للحركة.",
+        "why_others_wrong": "الكيناتيكا تدرس الحركة مع مسبباتها، والاستاتيكا تدرس اتزان الأجسام في حالة السكون."
+      }
+    },
+    {
+      "question_id": 6,
+      "type": "multiple_choice",
+      "question_text": "العلم الذي يختص بوصف الحركة مع الأخذ في الاعتبار مسبباتها من قوى هو:",
+      "options": {
+        "A": "الكينماتيكا",
+        "B": "الكيناتيكا",
+        "C": "الاستاتيكا",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "Kinetics = Motion study + Forces (Newton's Second Law).",
+        "why_correct": "علم الكيناتيكا أو الكينتيكا (Kinetics) هو الفرع الذي يربط بين الحركة والقوى المسببة لها.",
+        "why_others_wrong": "الكينماتيكا لا تأخذ القوى في الاعتبار، والاستاتيكا تدرس السكون والاتزان فقط."
+      }
+    },
+    {
+      "question_id": 7,
+      "type": "multiple_choice",
+      "question_text": "يتحرك جسيم في خط مستقيم تبعا للعلاقة v^2 = 8x + 20، إذا بدأ الجسيم حركته من نقطة الأصل بسرعة مقدارها 5 m/s، فإنه بعد مرور 3 ثواني يقطع مسافة مقدارها:",
+      "options": {
+        "A": "30",
+        "B": "33",
+        "C": "10",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "بتفاضل الطرفين بالنسبة لـ x: 2v(dv/dx) = 8 \\Rightarrow v(dv/dx) = 4. وبما أن العجلة f = v(dv/dx)، إذن العجلة ثابتة وتساوي 4 m/s^2. باستخدام معادلة الحركة: x = v_0 t + 0.5 f t^2 = 5(3) + 0.5(4)(3)^2 = 15 + 18 = 33 m.",
+        "why_correct": "بتطبيق التكامل أو معادلات الحركة ذات العجلة المنتظمة نجد أن المسافة المقطوعة هي 33.",
+        "why_others_wrong": "باقي الأرقام لا تنتج من التعويض الصحيح في القوانين الحركية."
+      }
+    },
+    {
+      "question_id": 8,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار سرعته بعد مرور 3 ثواني يعطى من:",
+      "options": {
+        "A": "17",
+        "B": "10",
+        "C": "35",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "v = v_0 + f t = 5 + 4(3) = 17 m/s.",
+        "why_correct": "باستخدام القانون الأول للحركة تحت تأثير عجلة منتظمة (f = 4 m/s^2) والسرعة الابتدائية (v_0 = 5 m/s).",
+        "why_others_wrong": "الحسابات الأخرى تفترض قِيماً خاطئة للعجلة أو الزمن."
+      }
+    },
+    {
+      "question_id": 9,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، يتحرك الجسيم بعجلة مقدارها:",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "f = v \\frac{dv}{dx} = \\frac{1}{2} \\frac{d(v^2)}{dx} = \\frac{1}{2} \\frac{d(8x + 20)}{dx} = \\frac{1}{2} (8) = 4 m/s^2.",
+        "why_correct": "العجلة هي نصف معامل الإزاحة x في معادلة مربع السرعة الخطية.",
+        "why_others_wrong": "باقي الخيارات لا تطابق الاشتقاق الرياضي للدالة."
+      }
+    },
+    {
+      "question_id": 10,
+      "type": "multiple_choice",
+      "question_text": "يتحرك جسيم في المنحنى r = 4\\theta^2 بسرعة زاوية منتظمة مقدارها 2 حول القطب علما بأنه بدأ حركته من القطب. عند دراسة حركة الجسيم في اللحظة t = 2 وجد أن \\theta تساوي:",
+      "options": {
+        "A": "8",
+        "B": "6",
+        "C": "4",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "\\dot{\\theta} = 2 \\Rightarrow \\theta = \\int 2 dt = 2t + C. بما أنه بدأ من القطب عند t=0 فإن C=0. إذن عند t=2 تكون \\theta = 2(2) = 4 rad.",
+        "why_correct": "بالتكامل المباشر للسرعة الزاوية المنتظمة بالنسبة للزمن.",
+        "why_others_wrong": "باقي الخيارات ناتجة عن أخطاء في التعويض بالزمن t."
+      }
+    },
+    {
+      "question_id": 11,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، قيمة r عند اللحظة t = 2 تساوي:",
+      "options": {
+        "A": "64",
+        "B": "97",
+        "C": "25000",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "r = 4\\theta^2. عند t = 2 وجدنا أن \\theta = 4. بالتعويض: r = 4(4)^2 = 4 \\times 16 = 64.",
+        "why_correct": "بالتعويض المباشر بقيمة الزاوية الحركية المستنتجة في معادلة المنحنى القطبية.",
+        "why_others_wrong": "باقي القيم الحسابية غير متوافقة رياضياً مع المعادلة المحددة للمسار."
+      }
+    },
+    {
+      "question_id": 12,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار السرعة الكلية للجسيم عند t = 2 يساوي:",
+      "options": {
+        "A": "112\\sqrt{2}",
+        "B": "121\\sqrt{2}",
+        "C": "64\\sqrt{2}",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "v_r = \\dot{r} = 8\\theta\\dot{\\theta} = 8(4)(2) = 64. v_\\theta = r\\dot{\\theta} = 64(2) = 128. v = \\sqrt{v_r^2 + v_\\theta^2} = \\sqrt{64^2 + 128^2} = 64\\sqrt{5}.",
+        "why_correct": "المقدار الصحيح للسرعة هو 64\\sqrt{5}، وبما أنه غير مدرج ضمن الخيارات A أو B أو C، فإن الإجابة هي لا شيء مما سبق.",
+        "why_others_wrong": "الخيارات المطروحة تحتوي على جذور وأرقام لا تتطابق مع المحصلة المستنتجة هندسياً."
+      }
+    },
+    {
+      "question_id": 13,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار العجلة الكلية يعطى من:",
+      "options": {
+        "A": "160",
+        "B": "380",
+        "C": "260",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "a_r = \\ddot{r} - r\\dot{\\theta}^2 = 32 - 64(2)^2 = -224. a_\\theta = r\\ddot{\\theta} + 2\\dot{r}\\dot{\\theta} = 0 + 2(64)(2) = 256. a = \\sqrt{(-224)^2 + 256^2} = 32\\sqrt{113}.",
+        "why_correct": "العجلة المحصلة تساوي 32\\sqrt{113} وهي غير متواجدة بالخيارات العددية، فالإجابة هي (لا شيء مما سبق).",
+        "why_others_wrong": "القيم المعروضة هي قيم عشوائية لا تمت لمركبات العجلة القطبية بصلة."
+      }
+    },
+    {
+      "question_id": 14,
+      "type": "multiple_choice",
+      "question_text": "المعادلتان البارامتريتان لحركة جسيم في مستوى هما x = 3t + 5, y = 27 - 3t^2، فإن مقدار سرعة الجسيم عند بداية الحركة يساوي:",
+      "options": {
+        "A": "9",
+        "B": "5",
+        "C": "3",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "\\dot{x} = 3, \\dot{y} = -6t. عند بداية الحركة (t = 0): \\dot{x} = 3, \\dot{y} = 0. السرعة v = \\sqrt{3^2 + 0^2} = 3.",
+        "why_correct": "السرعة الابتدائية تعتمد فقط على المركبة الأفقية الثابتة لأن المركبة الرأسية تنعدم عند t=0.",
+        "why_others_wrong": "باقي الخيارات تمثل تعويضات خاطئة في قيمة المتغير الزمني."
+      }
+    },
+    {
+      "question_id": 15,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار سرعة الجسيم عند التقائه بمحور x يساوي:",
+      "options": {
+        "A": "9",
+        "B": "3",
+        "C": "8",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "التقاء بمحور x يعني y = 0 \\Rightarrow 27 - 3t^2 = 0 \\Rightarrow t = 3 s. عند t = 3: \\dot{x} = 3, \\dot{y} = -6(3) = -18. v = \\sqrt{3^2 + (-18)^2} = \\sqrt{9 + 324} = \\sqrt{333} = 3\\sqrt{37}.",
+        "why_correct": "القيمة الدقيقة هي 3\\sqrt{37} وهي غير متاحة بالخيارات القياسية.",
+        "why_others_wrong": "الخيارات المقترحة لا تماثل الناتج الرياضي الصحيح."
+      }
+    },
+    {
+      "question_id": 16,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار بُعد الجسيم عن نقطة الأصل (المسافة المقطوعة موضعياً) عند t = 1 يساوي:",
+      "options": {
+        "A": "112",
+        "B": "64\\sqrt{37}",
+        "C": "121\\sqrt{27}",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "عند t = 1: x = 3(1)+5 = 8, y = 27 - 3(1)^2 = 24. المحصلة الموضعية r = \\sqrt{8^2 + 24^2} = \\sqrt{64 + 576} = \\sqrt{640} = 8\\sqrt{10}.",
+        "why_correct": "المحصلة الموضعية للمتجه البارامتري هي 8\\sqrt{10} وهي غير متوفرة بالاختيارات المعطاة.",
+        "why_others_wrong": "الأرقام الأخرى لا تتوافق مع حسابات نظرية فيثاغورس للإحداثيات الكارتيزية المستنتجة."
+      }
+    },
+    {
+      "question_id": 17,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، مقدار العجلة يعطى من:",
+      "options": {
+        "A": "6",
+        "B": "36",
+        "C": "3",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "\\ddot{x} = 0, \\ddot{y} = -6. مقدار العجلة المحصلة a = \\sqrt{0^2 + (-6)^2} = 6.",
+        "why_correct": "باشتقاق السرعة مرة أخرى نجد أن العجلة ثابتة في الاتجاه الرأسي ومقدارها المطلق يساوي 6.",
+        "why_others_wrong": "الخيارات الأخرى تمثل مربع العجلة أو قيم غير مشتقة بشكل سليم."
+      }
+    },
+    {
+      "question_id": 18,
+      "type": "multiple_choice",
+      "question_text": "يتحرك جسيم كتلته m أفقياً في وسط مقاومته 3mv حيث v السرعة، بدأ الجسيم حركته من نقطة الأصل بسرعة 400 m/s. عند دراسة الحركة عند اللحظة t = 2 (باعتبار e^-6 = 0.0025) فإن الجسيم يتحرك بعجلة مقدارها:",
+      "options": {
+        "A": "-1",
+        "B": "-190",
+        "C": "2",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "m(dv/dt) = -3mv \\Rightarrow dv/dt = -3v \\Rightarrow v(t) = 400 e^{-3t}. عند t=2: v(2) = 400 e^{-6} = 400(0.0025) = 1 m/s. العجلة f = -3v = -3(1) = -3 m/s^2.",
+        "why_correct": "العجلة المحسوبة هي -3 m/s^2 وهي عجلة تقصيرية غير متواجدة بالخيارات الثلاثة الأولى.",
+        "why_others_wrong": "باقي الاختيارات لا تنتج عن قانون المقاومة المعطى."
+      }
+    },
+    {
+      "question_id": 19,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، يتحرك الجسيم عندئذٍ بسرعة مقدارها:",
+      "options": {
+        "A": "0.5",
+        "B": "2",
+        "C": "1",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "v(2) = 400 \\times e^{-6} = 400 \\times 0.0025 = 1 m/s.",
+        "why_correct": "بالتعويض المباشر لقيمة الثابت الأسي المعطى في دالة السرعة المتناقصة.",
+        "why_others_wrong": "الحسابات الأخرى لم تضرب الثابت الأسي بالسرعة الابتدائية بشكل صحيح."
+      }
+    },
+    {
+      "question_id": 20,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، يقطع الجسيم مسافة مقدارها:",
+      "options": {
+        "A": "10",
+        "B": "30",
+        "C": "50",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "x = \\int_0^2 400 e^{-3t} dt = [-\\frac{400}{3} e^{-3t}]_0^2 = \\frac{400}{3}(1 - e^{-6}) = \\frac{400}{3}(1 - 0.0025) = \\frac{400}{3}(0.9975) = 133 m.",
+        "why_correct": "المسافة المقطوعة هي 133 متر وهي قيمة مغايرة تماماً للخيارات A, B, C.",
+        "why_others_wrong": "المسافة الحقيقية أكبر بكثير من القيم المحددة بالخيارات الأخرى نتيجة السرعة الابتدائية العالية."
+      }
+    },
+    {
+      "question_id": 21,
+      "type": "multiple_choice",
+      "question_text": "أُطلقت قذيفة بسرعة ابتدائية v_o = 100 m/s في اتجاه يصنع زاوية 30 درجة مع الأفقي باعتبار أن g = 10 m/s^2، فإن مدى القذيفة يساوي:",
+      "options": {
+        "A": "1000",
+        "B": "500\\sqrt{3} m",
+        "C": "250\\sqrt{3} m",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "R = \\frac{v_0^2 \\sin(2\\alpha)}{g} = \\frac{100^2 \\sin(60^\\circ)}{10} = \\frac{10000 \\times \\frac{\\sqrt{3}}{2}}{10} = 500\\sqrt{3} m.",
+        "why_correct": "بتطبيق قانون المدى الأفقي للمقذوفات في غياب مقاومة الهواء.",
+        "why_others_wrong": "الخيارات الأخرى تعبر عن أخطاء في حساب زاوية الضعف أو إهمال الجزر التربعي للثلاثة."
+      }
+    },
+    {
+      "question_id": 22,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، زمن الوصول لأقصى ارتفاع يساوي:",
+      "options": {
+        "A": "5s",
+        "B": "10s",
+        "C": "20s",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "t_h = \\frac{v_0 \\sin(\\alpha)}{g} = \\frac{100 \\sin(30^\\circ)}{10} = \\frac{100 \\times 0.5}{10} = 5 s.",
+        "why_correct": "هو الزمن اللازم لانعدام المركبة الرأسية للسرعة تحت تأثير الجاذبية الأرضية.",
+        "why_others_wrong": "باقي الخيارات تمثل زمن الطيران الكلي أو مضاعفات غير صحيحة."
+      }
+    },
+    {
+      "question_id": 23,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، زمن الطيران الكلي يساوي:",
+      "options": {
+        "A": "10s",
+        "B": "20s",
+        "C": "5s",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "T = 2 \\times t_h = 2 \\times 5 = 10 s.",
+        "why_correct": "زمن الطيران الكلي للمقذوف في نفس المستوى الأفقي يساوي ضعف زمن الوصول لأقصى ارتفاع.",
+        "why_others_wrong": "الخيارات الأخرى تعبر إما عن زمن الصعود فقط أو أزمنة مبالغ فيها."
+      }
+    },
+    {
+      "question_id": 24,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، أقصى ارتفاع تصل إليه القذيفة يساوي:",
+      "options": {
+        "A": "100m",
+        "B": "125m",
+        "C": "200m",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "H = \\frac{v_0^2 \\sin^2(\\alpha)}{2g} = \\frac{100^2 \\times (0.5)^2}{2 \\times 10} = \\frac{10000 \\times 0.25}{20} = 125 m.",
+        "why_correct": "بتطبيق الصيغة الرياضية المستنتجة من معادلة نيوتن الثالثة للحركة الرأسية الحرة.",
+        "why_others_wrong": "التعويضات الأخرى أغفلت تربيع جيب الزاوية أو قيمة ثابت عجلة الجاذبية الثنائية."
+      }
+    },
+    {
+      "question_id": 25,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، المسافة الأفقية المقطوعة من نقطة الانطلاق لكي يصل الجسيم إلى مسقط أقصى ارتفاع:",
+      "options": {
+        "A": "100\\sqrt{3} m",
+        "B": "200\\sqrt{3} m",
+        "C": "250\\sqrt{3} m",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "X_h = \\frac{R}{2} = \\frac{500\\sqrt{3}}{2} = 250\\sqrt{3} m.",
+        "why_correct": "مسار المقذوف متماثل حول المحور الرأسي المار بأقصى ارتفاع، لذا المسافة الأفقية للوصول إليه هي نصف المدى الكلي.",
+        "why_others_wrong": "باقي القيم لا تمثل نصف قيمة المدى الأفقي المستنتج سابقاً."
+      }
+    },
+    {
+      "question_id": 26,
+      "type": "true_false",
+      "question_text": "القوانين الأساسية هي عبارات أساسية مصاغة في قالب رياضي مسلّم بصحتها بدون برهان رياضي وتؤكدها المشاهدات والتجارب العملية.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "Definition of Axioms / Fundamental Laws.",
+        "why_correct": "هذا هو التعريف الفلسفي والعلمي الدقيق للقوانين الحركية البديهية (مثل قوانين نيوتن) التي تعد حجر الأساس للبرهنة.",
+        "why_others_wrong": "لا يوجد خيار بديل لأن العبارة صحيحة تماماً."
+      }
+    },
+    {
+      "question_id": 27,
+      "type": "true_false",
+      "question_text": "النظريات هي العبارات المصاغة في قالب رياضي ولها برهان رياضي تستخدم فيه القوانين والتعاريف.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "Definition of Theorems.",
+        "why_correct": "المنظومة النظرية الرياضية تعتمد على استنتاج قضايا جديدة (نظريات) بناءً على براهين منطقية تستند للبديهيات والتعاريف السابقة.",
+        "why_others_wrong": "العبارة صحيحة علمياً ولا تحتمل الخطأ."
+      }
+    },
+    {
+      "question_id": 28,
+      "type": "true_false",
+      "question_text": "السرعة هي ميل المماس (عند أي موضع x) على محور الزمن للمنحنى الذي يمثل العلاقة بين الإزاحة والزمن.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "v = \\frac{dx}{dt} = Slope of (x-t) curve.",
+        "why_correct": "هندسياً، المشتقة الأولى للإزاحة بالنسبة للزمن تمثل رياضياً ميل مماس منحنى (الإزاحة - الزمن).",
+        "why_others_wrong": "التعريف الهندسي للتفاضل يؤكد صحة العبارة."
+      }
+    },
+    {
+      "question_id": 29,
+      "type": "true_false",
+      "question_text": "العجلة هي طول تحت العمود (عند أي لحظة t) للمنحنى الذي يبين العلاقة بين السرعة والإزاحة.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "false",
+      "explanation": {
+        "mathematical_solution": "Subnormal of v-x curve is v(dv/dx) which equals acceleration, but it is evaluated at any position 'x', not at any time 't' directly on that curve context.",
+        "why_correct": "العبارة خاطئة لأن المنحنى يربط السرعة بالإزاحة x وليس بالزمن t، فالتحديد اللفظي بـ (عند أي لحظة t) يجعل السياق الهندسي للمنحنى غير دقيق.",
+        "why_others_wrong": "لو كانت 'عند أي موضع x' لكانت العبارة صحيحة هندسياً."
+      }
+    },
+    {
+      "question_id": 30,
+      "type": "true_false",
+      "question_text": "العجلة هي ميل المماس على محور الزمن للمنحنى الذي يمثل العلاقة بين السرعة والزمن.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "a = \\frac{dv}{dt} = Slope of (v-t) curve.",
+        "why_correct": "التفاضل الزمني للسرعة يمثل هندسياً ميل المماس لمنحنى السرعة والزمن.",
+        "why_others_wrong": "العبارة متوافقة تماماً مع التعريف الأساسي للمشتقة الحركية."
+      }
+    },
+    {
+      "question_id": 31,
+      "type": "true_false",
+      "question_text": "في المقذوفات فإن زمن الوصول إلى أقصى ارتفاع يساوي نصف زمن الطيران الكلي.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "t_h = \\frac{1}{2} T_{flight}",
+        "why_correct": "بسبب التماثل الهندسي التام لمسار المقذوف المكافئ حول محور الذروة في غياب مقاومة الهواء، يكون زمن الصعود مساوياً لزمن الهبوط.",
+        "why_others_wrong": "لا مجال للخطأ هنا نظراً لإهمال القوى الخارجية عدا الجاذبية المنتظمة."
+      }
+    },
+    {
+      "question_id": 32,
+      "type": "true_false",
+      "question_text": "إذا كان موضع جسيم يتحرك في خط مستقيم يتعين من x = 0.5 v t فإن سرعته تزداد بلا حدود.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "x = 0.5 t (dx/dt) \\Rightarrow \\frac{dx}{x} = 2 \\frac{dt}{t} \\Rightarrow \\ln x = 2 \\ln t + C \\Rightarrow x = k t^2. بالاشتقاق: v = 2 k t. عندما تؤول t إلى مالانهاية، تؤول v إلى مالانهاية أيضاً.",
+        "why_correct": "الاشتقاق الرياضي يثبت أن السرعة دالة خطية طردية مع الزمن، وبالتالي تزداد دون قيود مع مرور الوقت.",
+        "why_others_wrong": "التحليل التفاضلي ينفي ثبات السرعة أو تناقصها."
+      }
+    },
+    {
+      "question_id": 33,
+      "type": "true_false",
+      "question_text": "معادلة المسار في المقذوفات على مستوى أفقي تمثلها معادلة قطع زائد.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "false",
+      "explanation": {
+        "mathematical_solution": "y = x \\tan(\\alpha) - \\frac{g x^2}{2 v_0^2 \\cos^2(\\alpha)} (Parabola equation).",
+        "why_correct": "معادلة مسار المقذوف هي دالة تربعيّة من الدرجة الثانية تمثل هندسياً قطعاً مكافئاً (Parabola) وليس قطعاً زائداً (Hyperbola).",
+        "why_others_wrong": "القطع الزائد يتطلب إشارات وعلاقات هندسية مختلفة تماماً لا تنتج عن معادلات المقذوفات."
+      }
+    },
+    {
+      "question_id": 34,
+      "type": "true_false",
+      "question_text": "القوانين الأساسية هي العبارات المصاغة في قالب رياضي ولها برهان رياضي تستخدم فيه القوانين والتعاريف.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "false",
+      "explanation": {
+        "mathematical_solution": "Fundamental laws have no mathematical proof; they are axiomatic.",
+        "why_correct": "العبارة خاطئة لأن هذا الوصف ينطبق على النظريات المستنتجة، أما القوانين الأساسية (البديهيات) فلا تبرهن رياضياً بل تُقبل بصحتها وتؤكدها التجارب.",
+        "why_others_wrong": "تم عكس المفهوم بين القانون الأساسي والنظرية المشتقة."
+      }
+    },
+    {
+      "question_id": 35,
+      "type": "true_false",
+      "question_text": "تعتبر السرعة والعجلة من مميزات الحركة.",
+      "options": {
+        "true": "صح",
+        "false": "خطأ"
+      },
+      "correct_answer": "true",
+      "explanation": {
+        "mathematical_solution": "Kinematic descriptors = Vector speed & Vector acceleration.",
+        "why_correct": "السرعة والعجلة هما الصفتان الأساسيتان لتوصيف الحالة الديناميكية والتغير الموضعي لأي جسم متحرك.",
+        "why_others_wrong": "الحركة لا يمكن دراستها فيزيائياً بدون هذين العنصرين."
+      }
+    }
+  ]
+}

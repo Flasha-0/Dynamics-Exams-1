@@ -1,0 +1,269 @@
+{
+  "exam_info": {
+    "university": "جامعة سوهاج",
+    "faculty": "كلية العلوم / كلية التربية",
+    "department": "قسم الرياضيات",
+    "subject": "ديناميكا - الجزء التكميلي والمقالي الشامل",
+    "date": "غير محدد الترويسة",
+    "duration": "ساعتان"
+  },
+  "questions": [
+    {
+      "question_id": 1,
+      "type": "multiple_choice",
+      "question_text": "يتحرك جسيم كتلته m أفقياً في وسط مقاومته 2mv حيث v السرعة، بدأ الجسيم حركته من نقطة الأصل بسرعة 400 m/s. عند دراسة حركة الجسيم في اللحظة t = 3 مع اعتبار (e^-6 = 0.0025) فإن الجسيم يتحرك بعجلة تقصيرية هي:",
+      "options": {
+        "A": "-2",
+        "B": "-1",
+        "C": "-4",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "m(dv/dt) = -2mv \\Rightarrow dv/dt = -2v \\Rightarrow v(t) = 400 e^{-2t}. At t=3: v(3) = 400 e^{-6} = 400(0.0025) = 1 m/s. Acceleration f = -2v = -2(1) = -2 m/s^2.",
+        "why_correct": "الاشتقاق الرياضي يعطي عجلة تقصيرية مقدارها -2 عند اللحظة الزمنية المطلوبة.",
+        "why_others_wrong": "باقي الخيارات لا تتوافق مع قيمة السرعة اللحظية المخمدة المضروبة في معامل المقاومة 2."
+      }
+    },
+    {
+      "question_id": 2,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، يتحرك الجسيم عندئذٍ بسرعة مقدارها:",
+      "options": {
+        "A": "0.5",
+        "B": "1",
+        "C": "0.25",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "v(3) = 400 \\times e^{-6} = 400 \\times 0.0025 = 1 m/s.",
+        "why_correct": "بالتعويض المباشر بقيمة الثابت الأسي المعطى بالورقة الامتحانية مضروباً في السرعة الابتدائية.",
+        "why_others_wrong": "باقي القِيَم ناتجة عن أخطاء في ضرب القيمة الأسية."
+      }
+    },
+    {
+      "question_id": 3,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، يقطع الجسيم مسافة مقدارها:",
+      "options": {
+        "A": "10",
+        "B": "30",
+        "C": "50",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "x = \\int_0^3 400 e^{-2t} dt = [-\\frac{400}{2} e^{-2t}]_0^3 = 200(1 - e^{-6}) = 200(1 - 0.0025) = 200(0.9975) = 199.5 m.",
+        "why_correct": "المسافة الفعلية المقطوعة هي 199.5 متر وهي غير مدرجة بالخيارات الثلاثة الأولى، لذا نختار (لا شيء مما سبق).",
+        "why_others_wrong": "الخيارات المطروحة صغيرة جداً ولا تعبر عن ناتج التكامل المحدود الحقيقي."
+      }
+    },
+    {
+      "question_id": 4,
+      "type": "multiple_choice",
+      "question_text": "أُطلقت قذيفة بسرعة ابتدائية v_o = 50 m/s في اتجاه يصنع زاوية 30 درجة مع الأفقي باعتبار أن g = 10 m/s^2، فإن مدى القذيفة الأفقي يساوي:",
+      "options": {
+        "A": "125\\sqrt{3} m",
+        "B": "150\\sqrt{3} m",
+        "C": "1500\\sqrt{3} m",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "A",
+      "explanation": {
+        "mathematical_solution": "R = \\frac{v_0^2 \\sin(2\\alpha)}{g} = \\frac{50^2 \\sin(60^\\circ)}{10} = \\frac{2500 \\times \\frac{\\sqrt{3}}{2}}{10} = 125\\sqrt{3} m.",
+        "why_correct": "بتطبيق قانون المدى الأفقي المباشر للمقذوفات لسرعة 50 متر في الثانية.",
+        "why_others_wrong": "الخيارات الأخرى تعبر عن حسابات خاطئة لتربيع السرعة أو لوعاء جيب الزاوية المضاعف."
+      }
+    },
+    {
+      "question_id": 5,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، زمن الوصول لأقصى ارتفاع يساوي:",
+      "options": {
+        "A": "1.5 s",
+        "B": "2.5 s",
+        "C": "5 s",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "t_h = \\frac{v_0 \\sin(\\alpha)}{g} = \\frac{50 \\sin(30^\\circ)}{10} = \\frac{50 \\times 0.5}{10} = 2.5 s.",
+        "why_correct": "هو زمن الصعود اللازم لتصفير السرعة الرأسية تحت تأثير الجاذبية.",
+        "why_others_wrong": "الخيارات الأخرى تمثل إما زمن الطيران الكلي أو أرقاماً غير متوافقة مع جيب الزاوية 30."
+      }
+    },
+    {
+      "question_id": 6,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، زمن الطيران الكلي للقذيفة يساوي:",
+      "options": {
+        "A": "3 s",
+        "B": "10 s",
+        "C": "5 s",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "T = 2 \\times t_h = 2 \\times 2.5 = 5 s.",
+        "why_correct": "زمن الطيران الكلي في نفس المستوى الأفقي يساوي ضعف زمن الوصول للذروة.",
+        "why_others_wrong": "باقي الخيارات لا تطابق الضعف الهندسي لزمن الصعود المستنتج."
+      }
+    },
+    {
+      "question_id": 7,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، أقصى ارتفاع تصل إليه القذيفة يساوي:",
+      "options": {
+        "A": "21 m",
+        "B": "11.25 m",
+        "C": "20.25 m",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "H = \\frac{v_0^2 \\sin^2(\\alpha)}{2g} = \\frac{50^2 \\times (0.5)^2}{2 \\times 10} = \\frac{2500 \\times 0.25}{20} = 31.25 m.",
+        "why_correct": "أقصى ارتفاع محسوب بدقة هو 31.25 متر وهو غير موجود بالخيارات A, B, C.",
+        "why_others_wrong": "القيم المكتوبة تعود لمسائل مقذوفات أخرى بسرعات ابتدائية مختلفة."
+      }
+    },
+    {
+      "question_id": 8,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، المسافة الأفقية المقطوعة من نقطة الانطلاق لكي يصل الجسيم أقصى ارتفاع هي:",
+      "options": {
+        "A": "75\\sqrt{3} m",
+        "B": "125\\sqrt{3} m",
+        "C": "62.5\\sqrt{3} m",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "X_h = \\frac{R}{2} = \\frac{125\\sqrt{3}}{2} = 62.5\\sqrt{3} m.",
+        "why_correct": "بسبب التماثل الحركي للمقذوف، يقع مسقط الذروة الرأسية عند نصف المدى الأفقي تماماً.",
+        "why_others_wrong": "باقي القيم لا تعبر عن النصف الرياضي للمدى الإجمالي المحسوب."
+      }
+    },
+    {
+      "question_id": 9,
+      "type": "multiple_choice",
+      "question_text": "تتحرك نقطة مادية في خط مستقيم بحيث أن إزاحتها تتحدد بالمعادلة x = 3*cos(2t) + 4*sin(2t)، العلاقة بين السرعة والعجلة تعطى من:",
+      "options": {
+        "A": "d2x/dt2 = 2x",
+        "B": "d2x/dt2 = -2x",
+        "C": "d2x/dt2 = 4x",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "dx/dt = -6\\sin(2t) + 8\\cos(2t) \\Rightarrow d^2x/dt^2 = -12\\cos(2t) - 16\\sin(2t) = -4x.",
+        "why_correct": "العلاقة الصحيحة هي d^2x/dt^2 = -4x وهي غير مدرجة بالخيارات المطروحة.",
+        "why_others_wrong": "الخيارات المعروضة تحتوي على إشارات موجبة أو معاملات زاويّة خاطئة."
+      }
+    },
+    {
+      "question_id": 10,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، الزمن الدوري للحركة يعطى من:",
+      "options": {
+        "A": "3*pi",
+        "B": "2*pi",
+        "C": "pi",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "w^2 = 4 \\Rightarrow w = 2. T = \\frac{2\\pi}{w} = \\frac{2\\pi}{2} = \\pi.",
+        "why_correct": "الزمن الدوري يساوي النسبة بين المحيط الزاوي والتردد الزاوي المستنتج من معادلة الحركة.",
+        "why_others_wrong": "باقي الخيارات لم تقسم على المعامل الزاوي الصحيح للدوال."
+      }
+    },
+    {
+      "question_id": 11,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، سعة الحركة الاهتزازية تساوي:",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "D",
+      "explanation": {
+        "mathematical_solution": "Amplitude = \\sqrt{3^2 + 4^2} = \\sqrt{25) = 5.",
+        "why_correct": "السعة الكلية للموجة المركبة تساوي 5 وهي غير متواجدة بالخيارات العددية الأولى.",
+        "why_others_wrong": "الخيارات المطروحة تمثل قِيَم السعات المنفردة للمركبات الجيبية وليست المحصلة."
+      }
+    },
+    {
+      "question_id": 12,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، أكبر قيمة للسرعة تساوي:",
+      "options": {
+        "A": "5",
+        "B": "10",
+        "C": "20",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "B",
+      "explanation": {
+        "mathematical_solution": "v_max = w \\times Amplitude = 2 \\times 5 = 10.",
+        "why_correct": "أقصى سرعة للحركة التوافقية البسيطة تساوي حاصل ضرب التردد الزاوي في السعة الكلية.",
+        "why_others_wrong": "القيم الأخرى أهملت ضرب السعة في معامل التردد الزاوي."
+      }
+    },
+    {
+      "question_id": 13,
+      "type": "multiple_choice",
+      "question_text": "في المسألة السابقة، أكبر قيمة للعجلة تساوي:",
+      "options": {
+        "A": "5",
+        "B": "10",
+        "C": "20",
+        "D": "لا شيء مما سبق"
+      },
+      "correct_answer": "C",
+      "explanation": {
+        "mathematical_solution": "a_max = w^2 \\times Amplitude = 4 \\times 5 = 20.",
+        "why_correct": "أقصى عجلة تحدث عند أطراف المسار وتساوي مربع التردد الزاوي مضروباً في السعة.",
+        "why_others_wrong": "باقي الخيارات لا تحقق الطور الاشتقاقي الثاني للحركة الاهتزازية."
+      }
+    },
+    {
+      "question_id": 14,
+      "type": "subjective_essay",
+      "question_text": "يتحرك جسيم كتلته m افقياً في وسط مقاومته 3mv حيث v السرعة، فإذا بدأ الجسيم حركته من نقطة الأصل بسرعة مقدارها 100 m/s، فأوجِد المسافة التي يتحركها الجسيم عند أي لحظة زمنية t، ثم احسب قيمتها عند اللحظة t = 5.[span_0](start_span)[span_0](end_span)",
+      "options": null,
+      "correct_answer": "x(t) = (100/3) * (1 - e^(-3t))",
+      "explanation": {
+        "mathematical_solution": "m * (dv/dt) = -3mv \\Rightarrow dv/dt = -3v \\Rightarrow v(t) = 100 e^{-3t}. x(t) = \\int 100 e^{-3t} dt = \\frac{100}{3}(1 - e^{-3t}). At t=5: x(5) = \\frac{100}{3}(1 - e^{-15}) m.[span_1](start_span)[span_1](end_span)",
+        "why_correct": "التكامل الرياضي المباشر لمعادلة المقاومة يؤدي إلى دالة أسرية تناقصية للسرعة، وبتكاملها ينتج قانون المسافة المقطوعة تحت تأثير المقاومة الأفقية.[span_2](start_span)[span_2](end_span)",
+        "why_others_wrong": "أي حسابات لا تعتمد على فصل المتغيرات اللوغاريتمي تعطي دوالاً خطية خاطئة لا تعبر عن مقاومة الوسط.[span_3](start_span)[span_3](end_span)"
+      }
+    },
+    {
+      "question_id": 15,
+      "type": "subjective_essay",
+      "question_text": "ينزلق جسيم على دائرة رأسية ملساء مبتدئاً من السكون عند أعلى نقطة من الدائرة. أوجد سرعة الجسيم عند أي موضع، ثم أوجد الموضع الذي يغادر فيه الجسيم الدائرة.[span_4](start_span)[span_4](end_span)",
+      "options": null,
+      "correct_answer": "cos(theta) = 2/3",
+      "explanation": {
+        "mathematical_solution": "v^2 = 2ga(1 - \\cos\\theta). m_g\\cos\\theta - N = \\frac{mv^2}{a}. المغادرة عند N = 0 \\Rightarrow g\\cos\\theta = 2g(1 - \\cos\\theta) \\Rightarrow 3\\cos\\theta = 2 \\Rightarrow \\cos\\theta = 2/3.[span_5](start_span)[span_5](end_span)",
+        "why_correct": "انعدام رد الفعل العمودي N هو الشرط الفيزيائي الحتمي لانفصال الجسم عن السطح الدائري المائل.[span_6](start_span)[span_6](end_span)",
+        "why_others_wrong": "افتراض انعدام السرعة عند الانفصال خاطئ فيزيائياً؛ لأن الجسم ينفصل وهو يمتلك سرعة مماسية.[span_7](start_span)[span_7](end_span)"
+      }
+    },
+    {
+      "question_id": 16,
+      "type": "subjective_essay",
+      "question_text": "تتحرك نقطة مادية في خط مستقيم بحيث أن إزاحتها في أي لحظة تتحدد بالمعادلة: x = A*cos(w*t) + B*sin(w*t) حيث A, B ثوابت. أثبت أن حركة النقطة هي حركة توافقية بسيطة (ح. ت. ب)، ثم إذا كانت A=3, B=4, w=2 فأوجد زمن الذبذبة، السعة، وأكبر قيمة لكل من السرعة والعجلة.[span_8](start_span)[span_8](end_span)",
+      "options": null,
+      "correct_answer": "T = pi, Amplitude = 5, v_max = 10, a_max = 20",
+      "explanation": {
+        "mathematical_solution": "d^2x/dt^2 = -w^2 x. T = 2\\pi/w = \\pi. Amplitude = \\sqrt{3^2 + 4^2} = 5. v_max = wA = 10. a_max = w^2A = 20.[span_9](start_span)[span_9](end_span)",
+        "why_correct": "المعادلة التفاضلية الناتجة تطابق تماماً الصيغة القياسية للحركة التوافقية البسيطة، وحسابات السعة والمحملات تعتمد على العلاقات الموجية القياسية.[span_10](start_span)[span_10](end_span)",
+        "why_others_wrong": "جمع السعات بشكل خطي (3+4=7) خاطئ رياضياً لأن المركبتين متعامدتين في الطور الزاوي ويجب جمعهما اتجاهياً تحت الجذر.[span_11](start_span)[span_11](end_span)"
+      }
+    }
+  ]
+}
