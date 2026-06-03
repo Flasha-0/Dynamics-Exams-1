@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة امتحانات الديناميكا | جامعة سوهاج</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- ⚙️ إعداد MathJax: تعطيل الرندرة التلقائية، سنشغّلها يدوياً بعد حقن الـ HTML -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                // دعم أوامر LaTeX المستخدمة في الفيزياء والهندسة
+                packages: {'[+]': ['ams']}
+            },
+            options: {
+                // منع MathJax من مسح الـ DOM تلقائياً عند التحميل
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                processHtmlClass: 'math-render'
+            },
+            startup: {
+                // لا تُرندر عند البدء - نحن نتحكم في التوقيت
+                typeset: false
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #2c3e50;
+            --nav-bg: #ffffff;
+            --card-bg: #ffffff;
+            --primary-color: #3498db;
+            --hover-color: #2980b9;
+            --border-color: #e0e0e0;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --wrong-bg: #f8d7da;
+            --wrong-border: #dc3545;
+            --explanation-bg: #e8f4f8;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --nav-bg: #1e1e1e;
+            --card-bg: #1e1e1e;
+            --primary-color: #4da3ff;
+            --hover-color: #3182ce;
+            --border-color: #333333;
+            --correct-bg: rgba(40, 167, 69, 0.2);
+            --correct-border: #28a745;
+            --wrong-bg: rgba(220, 53, 69, 0.2);
+            --wrong-border: #dc3545;
+            --explanation-bg: #2d3748;
+            --shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--nav-bg);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--primary-color); cursor: pointer; }
+
+        .theme-toggle {
+            background: none; border: none; cursor: pointer; color: var(--text-color);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0.5rem; border-radius: 50%; transition: var(--transition);
+        }
+        .theme-toggle:hover { background-color: var(--bg-color); }
+
+        main { flex-grow: 1; width: 100%; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+
+        #home-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            animation: fadeIn 0.5s;
+        }
+
+        .exam-card {
+            background-color: var(--card-bg);
+            border: 2px solid transparent;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .exam-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
+        .exam-card h3 { color: var(--primary-color); font-size: 1.3rem; }
+        .exam-card p { font-size: 0.95rem; color: #7f8c8d; }
+        
+        .special-card {
+            background: linear-gradient(135deg, rgba(52,152,219,0.05), rgba(46,204,113,0.05));
+            border-color: rgba(52,152,219,0.3);
+        }
+        .credits-name { font-family: serif; font-weight: 900; color: var(--primary-color); letter-spacing: 0.5px; }
+
+        #exam-view { display: none; animation: fadeIn 0.5s; }
+        #external-view { display: none; animation: fadeIn 0.5s; }
+
+        .back-btn {
+            background-color: transparent; color: var(--text-color);
+            border: 2px solid var(--border-color); padding: 0.5rem 1.5rem;
+            border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 700;
+            transition: var(--transition); margin-bottom: 1.5rem;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .back-btn:hover { background-color: var(--border-color); }
+
+        #exam-info-container {
+            background-color: var(--card-bg);
+            padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);
+            margin-bottom: 2rem; border-right: 4px solid var(--primary-color);
+        }
+
+        .meta-info {
+            display: flex; gap: 1.5rem; color: #7f8c8d;
+            font-size: 0.9rem; flex-wrap: wrap; margin-top: 0.5rem;
+        }
+
+        .question-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);
+            margin-bottom: 1.5rem; border: 1px solid var(--border-color);
+        }
+
+        /* ✅ حاوية نص السؤال: RTL مع دعم bidi لمقاطع الرياضيات */
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            direction: rtl;
+            unicode-bidi: embed;
+            line-height: 2;
+        }
+
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 0.8rem; }
+
+        .option-btn {
+            background-color: var(--bg-color); color: var(--text-color);
+            border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px;
+            text-align: right; cursor: pointer; font-size: 1rem; transition: var(--transition);
+            /* ✅ دعم bidi على مستوى كل خيار */
+            direction: rtl;
+            unicode-bidi: embed;
+            line-height: 2;
+        }
+        .option-btn:hover:not(:disabled) { border-color: var(--primary-color); background-color: rgba(52,152,219,0.1); }
+        .option-btn:disabled { cursor: not-allowed; }
+        .option-btn.correct { background-color: var(--correct-bg); border-color: var(--correct-border); }
+        .option-btn.wrong { background-color: var(--wrong-bg); border-color: var(--wrong-border); }
+
+        .show-answer-btn {
+            background-color: var(--primary-color); color: white; border: none;
+            padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;
+            font-size: 1rem; font-weight: 700; transition: var(--transition);
+        }
+        .show-answer-btn:hover { background-color: var(--hover-color); }
+
+        .explanation-box {
+            margin-top: 1.5rem; padding: 1.2rem;
+            background-color: var(--explanation-bg); border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+            display: none; animation: fadeIn 0.5s;
+        }
+
+        /* ✅ حاوية الشرح النصي: RTL مع line-height مريح */
+        .explanation-text {
+            direction: rtl;
+            unicode-bidi: embed;
+            line-height: 2;
+            margin-top: 0.5rem;
+        }
+
+        /*
+         * ✅ الحل الجوهري لمشكلة RTL/LTR:
+         * حاوية المعادلات الرياضية تُضبط على LTR لأن LaTeX يعمل من اليسار لليمين.
+         * هذا يمنع انعكاس الأرقام والرموز الرياضية.
+         * نضيف overflow-x لدعم المعادلات الطويلة على الشاشات الصغيرة.
+         */
+        .math-solution {
+            direction: ltr;
+            text-align: left;
+            unicode-bidi: isolate;
+            background-color: rgba(0,0,0,0.04);
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-size: 1.05rem;
+            line-height: 2.2;
+            /* فاصل بصري خفيف */
+            border-left: 3px solid var(--primary-color);
+        }
+
+        [data-theme="dark"] .math-solution { background-color: rgba(255,255,255,0.04); }
+
+        /*
+         * ✅ عناصر MathJax المضمنة داخل النص العربي:
+         * نضمن أن الـ mjx-container لا يكسر تدفق السطر
+         * ونضيف هوامش أفقية صغيرة لمنع التصاق المعادلة بالنص
+         */
+        mjx-container {
+            display: inline !important;
+            margin: 0 0.15em;
+            vertical-align: middle;
+        }
+
+        /* عرض معادلات الـ display math (المعزولة في سطرها) */
+        mjx-container[display="true"] {
+            display: block !important;
+            margin: 0.8em 0 !important;
+            text-align: center;
+        }
+
+        #status-message {
+            text-align: center; font-size: 1.2rem; margin-top: 2rem;
+            color: #7f8c8d; display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="goHome()">الديناميكا | جامعة سوهاج</div>
+        <button class="theme-toggle" id="theme-toggle-btn" aria-label="تبديل الوضع">
+            <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg id="sun-icon" style="display:none" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
+    </header>
+
+    <main>
+        <div id="home-view">
+            <div class="exam-card" onclick="loadExam('exam_27_06_2021.json')">
+                <h3>امتحان دور يونيو 2021</h3>
+                <p>الفرقة الأولى تربية رياضة</p>
+            </div>
+            <div class="exam-card" onclick="loadExam('exam_17_06_2023.json')">
+                <h3>امتحان 17 يونيو 2023</h3>
+                <p>لائحة حديثة</p>
+            </div>
+            <div class="exam-card" onclick="loadExam('exam_25_05_2024.json')">
+                <h3>امتحان 25 مايو 2024</h3>
+                <p>لائحة موحدة</p>
+            </div>
+            <div class="exam-card" onclick="loadExam('exam_21_05_2025.json')">
+                <h3>امتحان 21 مايو 2025</h3>
+                <p>لائحة موحدة 2024-2025</p>
+            </div>
+            <div class="exam-card" onclick="loadExam('exam_06_10_2025.json')">
+                <h3>امتحان 6 أكتوبر 2025</h3>
+                <p>لائحة موحدة 2024-2025</p>
+            </div>
+            <div class="exam-card" onclick="loadExam('supplementary_and_essay_exams.json')">
+                <h3>أسئلة مقالية وتكميلية</h3>
+                <p>تجميعة شاملة لكل الأفكار</p>
+            </div>
+            <div class="exam-card special-card" onclick="loadExternalPage('Dynamics.html')">
+                <h3>📚 ملخصات وشروحات</h3>
+                <p>مذكرات وشرح م. <span class="credits-name">𝑵𝒐𝒖𝒓𝒉𝒂𝒏 𝑴𝒂𝒈𝒉𝒓𝒂𝒑𝒚</span></p>
+            </div>
+        </div>
+
+        <div id="status-message">جاري جلب البيانات...</div>
+
+        <div id="exam-view">
+            <button class="back-btn" onclick="goHome()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                الرجوع للرئيسية
+            </button>
+            <div id="exam-info-container"></div>
+            <div id="questions-container"></div>
+        </div>
+
+        <div id="external-view">
+            <button class="back-btn" onclick="goHome()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                الرجوع للرئيسية
+            </button>
+            <iframe id="external-frame" src="" style="width:100%;height:75vh;border:1px solid var(--border-color);border-radius:12px;box-shadow:var(--shadow);background-color:var(--card-bg);"></iframe>
+        </div>
+    </main>
+
+    <script>
+        // ============================================================
+        // ✅ دالة formatMath: قلب الكود - تعالج النصوص المختلطة
+        // ============================================================
+        /**
+         * تأخذ نصاً قد يحتوي على مزيج من العربية والـ LaTeX،
+         * وتُغلّف أجزاء الرياضيات فقط بـ \( ... \) دون المساس بالنص العربي.
+         * 
+         * منطق الكشف (بالترتيب):
+         * 1. إذا كان النص يحتوي مسبقاً على \( أو \[ → لا تعديل (موجود بالفعل)
+         * 2. إذا كان النص يحتوي على $$ → استبدلها بـ \[ ... \]
+         * 3. إذا كان النص يحتوي على $ → استبدلها بـ \( ... \)
+         * 4. كشف LaTeX الخام: أي token يحتوي على أوامر LaTeX → غلّفه بـ \( ... \)
+         *    - أوامر: \sqrt \frac \vec \int \sum \infty \times \cdot \alpha..إلخ
+         *    - أسس ورموز: ^ _ بشرط وجود نص إنجليزي حوله
+         *    - معادلات بصيغة: x = 2t أو v² = 8x
+         */
+        function formatMath(text) {
+            if (!text) return '';
+
+            // الخطوة 1: تنظيف شوائب الـ span
+            text = text
+                .replace(/\[span_\d+\]/g, '')
+                .replace(/\(start_span\)/g, '')
+                .replace(/\(end_span\)/g, '')
+                .replace(/\[\/span\]/g, '');
+
+            // الخطوة 2: إذا كان الـ LaTeX محدداً مسبقاً بعلامات صحيحة → لا تعديل
+            if (/\\[\(\[]/.test(text)) return text;
+
+            // الخطوة 3: استبدال $$ ... $$ بـ \[ ... \] (display math)
+            text = text.replace(/\$\$(.+?)\$\$/gs, (_, inner) => `\\[${inner}\\]`);
+
+            // الخطوة 4: استبدال $ ... $ بـ \( ... \) (inline math)
+            // نتجنب المطابقة المزدوجة باستخدام lookahead
+            text = text.replace(/\$(.+?)\$/g, (_, inner) => `\\(${inner}\\)`);
+
+            // الخطوة 5: كشف LaTeX الخام وتغليفه
+            // نبحث عن "كتل" رياضية لم تُغلَّف بعد
+            // الكتلة الرياضية هي: سلسلة تحتوي على أي من الأنماط التالية:
+            //   أ) أمر LaTeX يبدأ بـ backslash: \sqrt{...}, \frac{...}{...}, \vec{...} إلخ
+            //   ب) رمز أس ^ أو تحتسفلة _ مع نص إنجليزي
+            //   ج) معادلة بصيغة "حرف = تعبير" مثل: v^2 = 8x أو a = F/m
+            //
+            // الخوارزمية: نقسم النص بمسافات، ونفحص كل كلمة/رمز،
+            // ثم نجمع المقاطع الرياضية المتتالية قبل التغليف.
+
+            const LATEX_CMD = /\\(?:sqrt|frac|vec|hat|dot|bar|tilde|overline|underline|int|sum|prod|lim|infty|times|cdot|div|pm|mp|leq|geq|neq|approx|equiv|alpha|beta|gamma|delta|epsilon|zeta|eta|theta|lambda|mu|nu|xi|pi|rho|sigma|tau|phi|chi|psi|omega|Omega|Delta|Sigma|Phi|Gamma|Lambda|rightarrow|leftarrow|Rightarrow|Leftarrow|leftrightarrow|partial|nabla|forall|exists|in|notin|subset|supset|cup|cap|wedge|vee|neg|oplus|otimes|perp|angle|triangle|parallel)\b/;
+
+            // نمط للكشف عن كتلة رياضية خام
+            const RAW_MATH_PATTERN = /(?:(?:\\[a-zA-Z]+(?:\{[^}]*\})*)|(?:[a-zA-Z0-9]+\s*[\^_]\s*\{?[^}\s,،؛]+\}?)|(?:[a-zA-Z][a-zA-Z0-9]*\s*=\s*[a-zA-Z0-9\^_\+\-\*\/\.\(\)\\\{\}\s]+))/;
+
+            // نبحث عن مقاطع خام لم تُغلَّف في \(...\) أو \[...\]
+            // نستخدم نهجاً مختلفاً: split بمحددات LaTeX الموجودة ثم نعالج كل قطعة
+
+            // نقسم النص إلى: [ نص_عادي, محدد_موجود, نص_عادي, ... ]
+            // والمحددات الموجودة هي \(...\) أو \[...\]
+            const EXISTING_DELIMITERS = /(\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])/g;
+            const parts = text.split(EXISTING_DELIMITERS);
+
+            const processed = parts.map((part, idx) => {
+                // القطع الفردية (index 1, 3, 5...) هي المحددات الموجودة → لا تعديل
+                if (idx % 2 === 1) return part;
+
+                // القطع الزوجية هي النص العادي → نبحث فيها عن LaTeX خام
+                return wrapRawLatex(part);
+            });
+
+            return processed.join('');
+        }
+
+        /**
+         * تبحث في قطعة نص عادية عن LaTeX خام وتغلّفه
+         * النمط المستخدم يكتشف:
+         * - أوامر LaTeX: \sqrt{3}, \frac{1}{2}, \vec{v} إلخ
+         * - أسس وتحسفلات: v^2, x_0, a^{2}
+         * - معادلات: v^2 = 8x, a = F/m, x = 2t + 5
+         * - أعداد مركبة مع LaTeX: 112\sqrt{2}
+         */
+        function wrapRawLatex(text) {
+            if (!text) return text;
+
+            // نمط شامل يكتشف "جزيرة رياضية" في النص
+            // الجزيرة: تبدأ بحرف لاتيني أو رقم أو \ وتحتوي على مؤشر رياضي
+            const MATH_ISLAND = /(?:[0-9]*[a-zA-Z]?\\[a-zA-Z]+(?:\{[^}]*\})*(?:\^[{\w}]+)?|[a-zA-Z0-9]+(?:\^|_)\{?[a-zA-Z0-9\+\-\*]+\}?(?:\s*[=<>]\s*[a-zA-Z0-9\+\-\*\^_\.\(\)\\\{\}\s]*)?|[a-zA-Z]\s*[=]\s*[a-zA-Z0-9\+\-\*\^_\.\(\)\\\{\}\s]+)/g;
+
+            return text.replace(MATH_ISLAND, (match) => {
+                // تجنب تغليف ما هو مُغلَّف بالفعل (لا ينبغي أن يصل هنا، احتياط)
+                if (match.startsWith('\\(') || match.startsWith('\\[')) return match;
+                // تجنب تغليف كلمات عربية أو نصوص بلا رياضيات
+                if (/^[a-zA-Z]+$/.test(match) && match.length <= 2) return match;
+                return `\\(${match.trim()}\\)`;
+            });
+        }
+
+        // ============================================================
+        // باقي الكود (تهيئة، تنقل، رندرة)
+        // ============================================================
+
+        const homeView = document.getElementById('home-view');
+        const examView = document.getElementById('exam-view');
+        const externalView = document.getElementById('external-view');
+        const externalFrame = document.getElementById('external-frame');
+        const examInfoContainer = document.getElementById('exam-info-container');
+        const questionsContainer = document.getElementById('questions-container');
+        const statusMessage = document.getElementById('status-message');
+        const BASE_PATH = './dynamics_exams_data/';
+
+        window.goHome = function() {
+            examView.style.display = 'none';
+            externalView.style.display = 'none';
+            statusMessage.style.display = 'none';
+            homeView.style.display = 'grid';
+            questionsContainer.innerHTML = '';
+            externalFrame.src = '';
+        };
+
+        window.loadExternalPage = function(pageUrl) {
+            homeView.style.display = 'none';
+            examView.style.display = 'none';
+            statusMessage.style.display = 'none';
+            externalFrame.src = pageUrl;
+            externalView.style.display = 'block';
+        };
+
+        window.loadExam = async function(fileName) {
+            homeView.style.display = 'none';
+            externalView.style.display = 'none';
+            statusMessage.style.display = 'block';
+            statusMessage.textContent = 'جاري جلب البيانات...';
+            examView.style.display = 'none';
+
+            try {
+                const response = await fetch(`${BASE_PATH}${fileName}`);
+                if (!response.ok) throw new Error('تعذر الوصول للملف');
+                const data = await response.json();
+                statusMessage.style.display = 'none';
+                renderExam(data);
+                examView.style.display = 'block';
+
+                // ✅ تشغيل MathJax فقط على حاوية الأسئلة (أسرع وأكثر دقة)
+                if (window.MathJax) {
+                    MathJax.typesetPromise([questionsContainer]).catch(err => console.error('MathJax error:', err));
+                }
+            } catch (error) {
+                console.error(error);
+                statusMessage.textContent = '❌ حدث خطأ! تأكد من وجود المجلد وتشغيل الموقع على Local Server.';
+            }
+        };
+
+        // ============================================================
+        // رندرة الامتحان - يستخدم formatMath على كل الحقول
+        // ============================================================
+        function renderExam(data) {
+            const info = data.exam_info;
+            examInfoContainer.innerHTML = `
+                <h2>${formatMath(info.subject)}</h2>
+                <div class="meta-info">
+                    <span>🏢 ${formatMath(info.university)} - ${formatMath(info.faculty)}</span>
+                    <span>📅 ${formatMath(info.date)}</span>
+                    <span>⏱️ ${formatMath(info.duration)}</span>
+                </div>
+            `;
+
+            let html = '';
+            data.questions.forEach((q, index) => {
+                // ✅ تطبيق formatMath على نص السؤال
+                const qText = formatMath(q.question_text);
+                const qCorrect = q.correct_answer;
+
+                html += `<div class="question-card">`;
+                html += `<div class="question-text"><span style="color:var(--primary-color)">س${index + 1}:</span> ${qText}</div>`;
+
+                const exp = q.explanation || {};
+                // ✅ تطبيق formatMath على الحل الرياضي (الحل الأساسي لمشكلة 1)
+                const mathSolution = formatMath(exp.mathematical_solution || '');
+                // ✅ تطبيق formatMath على التوضيحات
+                const whyCorrect = formatMath(exp.why_correct || '');
+                const whyWrong = exp.why_others_wrong ? formatMath(exp.why_others_wrong) : '';
+                
+                if (q.type === 'subjective_essay') {
+                    // ✅ الإجابة النهائية: نغلّفها بـ \[ \] للعرض المعزول
+                    const finalAnswer = qCorrect ? `\\[${qCorrect}\\]` : '';
+                    html += `
+                        <button class="show-answer-btn" onclick="revealEssay(this, 'exp-${q.question_id}')">عرض الحل النموذجي</button>
+                        <div id="exp-${q.question_id}" class="explanation-box">
+                            <h4 style="color:var(--primary-color);margin-bottom:5px">الإجابة النهائية:</h4>
+                            <div class="math-solution">${finalAnswer}</div>
+                            <h4 style="color:var(--primary-color);margin-top:15px;margin-bottom:5px">الخطوات الرياضية:</h4>
+                            <div class="math-solution">${mathSolution}</div>
+                            <h4 style="color:var(--primary-color);margin-top:15px;margin-bottom:5px">توضيح:</h4>
+                            <p class="explanation-text">${whyCorrect}</p>
+                        </div>
+                    `;
+                } else {
+                    html += `<div class="options-grid">`;
+                    for (const [key, optText] of Object.entries(q.options || {})) {
+                        // ✅ تطبيق formatMath على كل خيار (الحل الأساسي لمشكلة 2)
+                        const formattedOption = formatMath(String(optText));
+                        html += `
+                            <button class="option-btn"
+                                    data-key="${key}"
+                                    data-correct="${qCorrect}"
+                                    onclick="handleOption(this, '${q.question_id}')">
+                                <strong>${key})</strong> ${formattedOption}
+                            </button>
+                        `;
+                    }
+                    html += `</div>`;
+
+                    html += `
+                        <div id="exp-${q.question_id}" class="explanation-box">
+                            <h4 style="color:var(--primary-color);margin-bottom:5px">الخطوات الرياضية:</h4>
+                            <div class="math-solution">${mathSolution}</div>
+                            <h4 style="color:var(--primary-color);margin-top:15px;margin-bottom:5px">السبب العلمي:</h4>
+                            <p class="explanation-text">${whyCorrect}</p>
+                            ${whyWrong ? `<p class="explanation-text" style="color:var(--wrong-border);margin-top:5px;font-size:0.9rem">* ${whyWrong}</p>` : ''}
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+            });
+            questionsContainer.innerHTML = html;
+        }
+
+        window.handleOption = function(btn, qId) {
+            const container = btn.parentElement;
+            const allBtns = container.querySelectorAll('.option-btn');
+            const clicked = btn.getAttribute('data-key');
+            const correct = btn.getAttribute('data-correct');
+
+            allBtns.forEach(b => b.disabled = true);
+
+            if (clicked === correct) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+                const correctBtn = container.querySelector(`[data-key="${correct}"]`);
+                if (correctBtn) correctBtn.classList.add('correct');
+            }
+
+            const expBox = document.getElementById(`exp-${qId}`);
+            if (expBox) {
+                expBox.style.display = 'block';
+                // ✅ إعادة رندرة MathJax على صندوق الشرح فقط بعد إظهاره
+                if (window.MathJax) {
+                    MathJax.typesetPromise([expBox]).catch(err => console.error('MathJax error:', err));
+                }
+            }
+        };
+
+        window.revealEssay = function(btn, expId) {
+            const expBox = document.getElementById(expId);
+            if (expBox) {
+                expBox.style.display = 'block';
+                if (window.MathJax) {
+                    MathJax.typesetPromise([expBox]).catch(err => console.error('MathJax error:', err));
+                }
+            }
+            btn.style.display = 'none';
+        };
+
+        // نظام الوضع الليلي
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        const moon = document.getElementById('moon-icon');
+        const sun = document.getElementById('sun-icon');
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                moon.style.display = 'none';
+                sun.style.display = 'block';
+            } else {
+                document.body.removeAttribute('data-theme');
+                moon.style.display = 'block';
+                sun.style.display = 'none';
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        setTheme(localStorage.getItem('theme') || 'light');
+        themeBtn.addEventListener('click', () => {
+            setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+    </script>
+</body>
+</html>
+
