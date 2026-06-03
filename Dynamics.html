@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ديناميكا 1 - النسخة القياسية بالرموز اليدوية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+            color: #112233;
+            line-height: 1.9;
+            padding: 20px 15px 50px;
+            font-size: 19px; /* خط ضخم جداً ومريح للقراءة من الموبايل */
+            font-weight: 800; /* جعل جميع النصوص عريضة ومجسمة */
+        }
+
+        /* تلوين وتمييز كل محاضرة بلون إطار مختلف لسهولة التفرقة */
+        .card {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 25px 20px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .card-1 { border-right: 12px solid #1e4a76; }
+        .card-2 { border-right: 12px solid #2c7a4d; }
+        .card-3 { border-right: 12px solid #6b46c0; }
+        .card-4 { border-right: 12px solid #c2410c; }
+        .card-5 { border-right: 12px solid #0284c7; }
+        .card-6 { border-right: 12px solid #be185d; }
+
+        .main-header {
+            text-align: center;
+            background: linear-gradient(135deg, #0f2c41, #1e5a84);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 { font-size: 28px; font-weight: 900; margin-bottom: 10px; }
+        h2 { font-size: 24px; font-weight: 900; color: #0a1e2d; margin-bottom: 20px; border-bottom: 3px solid #e1e8f0; padding-bottom: 10px; }
+        h3 { font-size: 22px; font-weight: 900; color: #164e75; margin: 30px 0 15px 0; }
+        p, li { margin-bottom: 15px; }
+        ul { padding-right: 30px; margin: 15px 0; }
+
+        /* الكتل الرياضية: اتجاه إجباري من اليسار لليمين وبدون علامات ضرب */
+        .math-block {
+            direction: ltr !important;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px 15px;
+            background: #eef2f7;
+            border-radius: 15px;
+            font-family: 'Times New Roman', serif;
+            font-size: 24px;
+            color: #0b2b42;
+            font-weight: 900;
+            border-left: 8px solid #3b6b91;
+        }
+
+        /* تصميم الكسر الرأسي الحقيقي بدون شرطة مائلة */
+        .fraction {
+            display: inline-table;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 6px;
+        }
+        .fraction > span { display: table-row; }
+        .num {
+            display: table-cell;
+            border-bottom: 3px solid #0b2b42;
+            padding-bottom: 4px;
+            font-size: 0.95em;
+        }
+        .den {
+            display: table-cell;
+            padding-top: 5px;
+            font-size: 0.95em;
+        }
+
+        /* نظام المشتقات الزمنية (النقطة والنقطتين فوق الحرف) */
+        .d1, .d2 {
+            position: relative;
+            display: inline-block;
+        }
+        .d1::after {
+            content: "•";
+            position: absolute;
+            top: -0.7em;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            color: #b42b2b;
+        }
+        .d2::after {
+            content: "••";
+            position: absolute;
+            top: -0.7em;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            letter-spacing: -2px;
+            color: #b42b2b;
+        }
+
+        /* متجهات الوحدة (تحتها خط صريح) */
+        .vec {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 4px;
+            color: #0b2b42;
+        }
+
+        /* تصميم المخطط البصري (التفاضل والتكامل) من الصفر */
+        .diagram-container {
+            background: #e1edf7;
+            border-radius: 20px;
+            padding: 25px 10px;
+            margin: 25px 0;
+            border: 2px solid #b6d1e8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .diagram-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+        .diagram-box {
+            background: #ffffff;
+            color: #0b2b42;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 900;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid #8ba8c1;
+        }
+        .arrow-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 900;
+            color: #d94a4a;
+        }
+        .arrow-right { font-size: 30px; line-height: 0.8; color: #2c7a4d; }
+        .arrow-left { font-size: 30px; line-height: 0.8; color: #c2410c; }
+
+        .example-box {
+            background: #ffffff;
+            border: 2px solid #dce4eb;
+            border-right: 10px solid #1e5a84;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .example-title {
+            font-size: 22px;
+            color: #1e5a84;
+            border-bottom: 2px dashed #b1c6d8;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 16px;
+            color: #556b7d;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-header">
+    <h1>مقرر ديناميكا 1 (محاضرات 1-6)</h1>
+    <p>النسخة النقية بالرموز اليدوية المعتمدة (f , &omega; , المتجهات والنقاط العلوية)</p>
+</div>
+
+<div class="card card-1">
+    <h2>المحاضرة الأولى: الحركة في خط مستقيم</h2>
+    <h3>القوانين الأساسية</h3>
+    <p>إذا تحرك جسم في خط مستقيم فإن موقعه يتعين كدالة في الزمن: <span class="math-block">x = x(t)</span></p>
+    
+    <ul>
+        <li>الإزاحة: التغير في الموضع خلال فترة زمنية</li>
+    </ul>
+    <div class="math-block">&Delta;x = x₂ - x₁</div>
+    
+    <ul><li>السرعة المتوسطة:</li></ul>
+    <div class="math-block">Vₐ = <div class="fraction"><span><span class="num">&Delta;x</span></span><span><span class="den">&Delta;t</span></span></div></div>
+    
+    <ul><li>السرعة اللحظية:</li></ul>
+    <div class="math-block">v = <div class="fraction"><span><span class="num">dx</span></span><span><span class="den">dt</span></span></div></div>
+    
+    <ul><li>العجلة اللحظية (بالرمز المعتمد f):</li></ul>
+    <div class="math-block">f = <div class="fraction"><span><span class="num">dv</span></span><span><span class="den">dt</span></span></div> = <div class="fraction"><span><span class="num">d²x</span></span><span><span class="den">dt²</span></span></div></div>
+    
+    <ul><li>صيغة العجلة بدلالة الموضع (عند غياب الزمن):</li></ul>
+    <div class="math-block">f = v <div class="fraction"><span><span class="num">dv</span></span><span><span class="den">dx</span></span></div></div>
+
+    <h3>المخطط البصري للحركة والتفاضل والتكامل</h3>
+    <div class="diagram-container">
+        <div class="diagram-row">
+            <div class="diagram-box">الموضع x</div>
+            <div class="arrow-box"><span class="arrow-right">←</span>تفاضل</div>
+            <div class="diagram-box">السرعة v</div>
+            <div class="arrow-box"><span class="arrow-right">←</span>تفاضل</div>
+            <div class="diagram-box">العجلة f</div>
+        </div>
+        <div class="diagram-row">
+            <div class="diagram-box">العجلة f</div>
+            <div class="arrow-box"><span class="arrow-left">→</span>تكامل</div>
+            <div class="diagram-box">السرعة v</div>
+            <div class="arrow-box"><span class="arrow-left">→</span>تكامل</div>
+            <div class="diagram-box">الموضع x</div>
+        </div>
+    </div>
+
+    <h3>أمثلة المحاضرة الأولى</h3>
+    <div class="example-box">
+        <div class="example-title">مثال (1)</div>
+        <p>موضع جسم هو x = a t² + b t + c. أوجد السرعة والعجلة.</p>
+        <p>الحل:<br>
+        السرعة: v = 2a t + b<br>
+        العجلة: f = 2a</p>
+    </div>
+    <div class="example-box">
+        <div class="example-title">مثال (4)</div>
+        <p>سرعة جسم هي v² = -16x² + 16. أوجد العجلة.</p>
+        <p>الحل:<br>
+        بالتفاضل الضمني بالنسبة للموضع: 2v <div class="fraction"><span><span class="num">dv</span></span><span><span class="den">dx</span></span></div> = -32x<br>
+        وبما أن العجلة f = v <div class="fraction"><span><span class="num">dv</span></span><span><span class="den">dx</span></span></div> ، إذن العجلة الكلية هي: f = -16x</p>
+    </div>
+
+    <h3>قوانين الحركة الثلاثة (عند ثبوت العجلة f)</h3>
+    <div class="math-block">v = f t + v₀</div>
+    <div class="math-block">x = <div class="fraction"><span><span class="num">1</span></span><span><span class="den">2</span></span></div> f t² + v₀ t</div>
+    <div class="math-block">v² = v₀² + 2 f x</div>
+</div>
+
+<div class="card card-2">
+    <h2>المحاضرة الثانية: الحركة في مستوى (الكارتيزية)</h2>
+    <p>متجه الموضع:</p>
+    <div class="math-block">r = x <span class="vec">i</span> + y <span class="vec">j</span></div>
+    
+    <ul><li>متجه السرعة (باستخدام النقاط العلوية للمشتقات):</li></ul>
+    <div class="math-block">v = <span class="d1">x</span> <span class="vec">i</span> + <span class="d1">y</span> <span class="vec">j</span></div>
+    
+    <ul><li>متجه العجلة:</li></ul>
+    <div class="math-block">f = <span class="d2">x</span> <span class="vec">i</span> + <span class="d2">y</span> <span class="vec">j</span></div>
+
+    <h3>أمثلة المحاضرة الثانية</h3>
+    <div class="example-box">
+        <div class="example-title">مثال (1)</div>
+        <p>المعادلتان هما x = 5t و y = 20 - 5t² . أوجد العجلة.</p>
+        <p>الحل:<br>
+        السرعة: <span class="d1">x</span> = 5 و <span class="d1">y</span> = -10t<br>
+        العجلة: <span class="d2">x</span> = 0 و <span class="d2">y</span> = -10<br>
+        متجه العجلة: f = -10 <span class="vec">j</span></p>
+    </div>
+</div>
+
+<div class="card card-3">
+    <h2>المحاضرة الثالثة: الحركة في الإحداثيات القطبية</h2>
+    <ul><li>متجه السرعة القطبي (السرعة الزاوية تُكتب &omega;):</li></ul>
+    <div class="math-block">v = <span class="d1">r</span> <span class="vec">e</span><sub>r</sub> + r &omega; <span class="vec">e</span><sub>&theta;</sub></div>
+    
+    <ul><li>متجه العجلة القطبي (مشتقة السرعة الزاوية تُكتب <span class="d2">&theta;</span>):</li></ul>
+    <div class="math-block">f = ( <span class="d2">r</span> - r &omega;² ) <span class="vec">e</span><sub>r</sub> + ( 2 <span class="d1">r</span> &omega; + r <span class="d2">&theta;</span> ) <span class="vec">e</span><sub>&theta;</sub></div>
+
+    <div class="example-box">
+        <div class="example-title">حالة خاصة: مسار دائري ثابت (r = a)</div>
+        <p>بما أن نصف القطر a ثابت، إذن المشتقات <span class="d1">r</span> = 0 و <span class="d2">r</span> = 0 وتصبح العجلة:</p>
+        <div class="math-block">f = - a &omega;² <span class="vec">e</span><sub>r</sub> + a <span class="d2">&theta;</span> <span class="vec">e</span><sub>&theta;</sub></div>
+    </div>
+</div>
+
+<div class="card card-4">
+    <h2>المحاضرة الرابعة: قوانين نيوتن وتطبيقاتها</h2>
+    <p>القانون الثاني: القوة المحصلة = الكتلة m مضروبة في العجلة f.</p>
+    
+    <div class="example-box">
+        <div class="example-title">إثبات الشد عند أسفل نقطة (دائرة رأسية)</div>
+        <p>معادلة الشد المعطاة: T = m g (3 cos&theta; + 7)</p>
+        <p>الحل:<br>
+        عند أسفل نقطة تكون الزاوية &theta; = 0 ونجد أن cos(0) = 1.<br>
+        نعوض مباشرة:</p>
+        <div class="math-block">T = 10mg = 10w</div>
+        <p>وهو الإثبات المطلوب الحتمي.</p>
+    </div>
+
+    <div class="example-box">
+        <div class="example-title">زاوية انفصال جسيم من دائرة ملساء بالخارج</div>
+        <p>معادلة رد الفعل: R = m g (3 cos&theta; - 2)</p>
+        <p>الحل:<br>
+        يغادر الجسيم السطح عندما ينعدم رد الفعل R = 0.<br>
+        إذن: 3 cos&theta; - 2 = 0</p>
+        <div class="math-block">cos&theta; = <div class="fraction"><span><span class="num">2</span></span><span><span class="den">3</span></span></div></div>
+        <p>وهو الإثبات المطلوب لانفصال الجسيم.</p>
+    </div>
+</div>
+
+<div class="card card-5">
+    <h2>المحاضرة الخامسة: المقذوفات في مستوى رأسي</h2>
+    <p>بإهمال مقاومة الهواء، تكون العجلة الرأسية الوحيدة هي عجلة الجاذبية (f لأسفل).</p>
+    <ul><li>زمن أقصى ارتفاع:</li></ul>
+    <div class="math-block">t_h = <div class="fraction"><span><span class="num">v₀ sin&alpha;</span></span><span><span class="den">f</span></span></div></div>
+    
+    <ul><li>أقصى ارتفاع رأسي:</li></ul>
+    <div class="math-block">h = <div class="fraction"><span><span class="num">v₀² sin²&alpha;</span></span><span><span class="den">2f</span></span></div></div>
+    
+    <ul><li>المدى الأفقي الكلي:</li></ul>
+    <div class="math-block">R = <div class="fraction"><span><span class="num">v₀² sin(2&alpha;)</span></span><span><span class="den">f</span></span></div></div>
+</div>
+
+<div class="card card-6">
+    <h2>المحاضرة السادسة: الحركة التوافقية البسيطة</h2>
+    <p>المعادلة التفاضلية القياسية للحركة التوافقية البسيطة:</p>
+    <div class="math-block"><span class="d2">x</span> = - &omega;² x</div>
+    
+    <ul><li>علاقة السرعة اللحظية بالموضع:</li></ul>
+    <div class="math-block">v = &omega; &radic;(a² - x²)</div>
+    
+    <ul><li>الزمن الدوري الكامل لاحتزازة واحدة (&tau;):</li></ul>
+    <div class="math-block">&tau; = <div class="fraction"><span><span class="num">2&pi;</span></span><span><span class="den">&omega;</span></span></div></div>
+
+    <div class="example-box">
+        <div class="example-title">مثال (1)</div>
+        <p>تربيع سرعة جسيم معطى من: v² = -16x² + 32x + 48. أثبت أن الحركة توافقية بسيطة وأوجد السعة والزمن الدوري.</p>
+        <p>الحل:<br>
+        تفاضل الطرفين لـ x ينتج العجلة: <span class="d2">x</span> = -16x + 16<br>
+        بسحب العامل المشترك: <span class="d2">x</span> = -16(x - 1)<br>
+        بنقل المركز X = x - 1 تصبح المعادلة: <span class="d2">X</span> = -16X.<br>
+        بالمقارنة إذن &omega;² = 16 ومنها &omega; = 4.<br>
+        الزمن الدوري &tau; = <div class="fraction"><span><span class="num">2&pi;</span></span><span><span class="den">4</span></span></div> = <div class="fraction"><span><span class="num">&pi;</span></span><span><span class="den">2</span></span></div> ثانية.<br>
+        لوضع v = 0 وحل المعادلة نجد أن السعة القصوى a = 2.</p>
+    </div>
+</div>
+
+<div class="footer">
+    تصميم ومراجعة القوانين الصافية المعتمدة | Flasha 🎴
+</div>
+
+</body>
+</html>
